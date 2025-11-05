@@ -1,0 +1,21 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  api:
+    build: .
+    restart: always
+    ports:
+      - "5005:8000"
+    environment:
+      - MEDCLS_ENABLE_DB_CHECKER=true
+      - MEDCLS_ENABLE_RULES=true
+    # environment:
+    #   - OPENAI_API_KEY=${OPENAI_API_KEY}
+    #   - GEMINI_API_KEY=${GEMINI_API_KEY}
+    #   - NGROK_AUTH_TOKEN=${NGROK_AUTH_TOKEN}
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+
