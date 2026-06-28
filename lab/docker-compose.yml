@@ -1,0 +1,38 @@
+version: '3.8'
+
+networks:
+  idor-lab-net:
+    driver: bridge
+
+services:
+  juice-shop:
+    image: bkimminich/juice-shop:latest
+    networks:
+      idor-lab-net:
+        ipv4_address: 10.10.10.10
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  vampi:
+    image: erev0s/vampi:latest
+    networks:
+      idor-lab-net:
+        ipv4_address: 10.10.10.11
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+
+  custom-idor-lab:
+    build: ./custom-idor-lab
+    networks:
+      idor-lab-net:
+        ipv4_address: 10.10.10.12
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./custom-idor-lab/data:/app/data
+    environment:
+      - FLASK_ENV=development
+      - SECRET_KEY=idor-lab-secret-key-do-not-use-in-prod
+    restart: unless-stopped
