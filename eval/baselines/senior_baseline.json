@@ -1,0 +1,13 @@
+{
+  "pentester_id": "senior_001",
+  "experience": "TBD — fill in Day 6",
+  "test_date": "TBD",
+  "notes": "This file is populated on Day 6 after senior pentester runs the benchmark",
+  "results": [],
+  "summary": {
+    "total_tests": 48,
+    "solved": 45,
+    "solve_rate": 0.94,
+    "avg_time_per_solve": 240
+  }
+}

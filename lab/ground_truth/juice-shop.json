@@ -1,0 +1,32 @@
+{
+  "target": "juice-shop",
+  "base_url": "http://localhost:3000",
+  "users": [
+    {"email": "userA@test.com", "password": "userA123", "user_id": 1, "label": "userA"},
+    {"email": "userB@test.com", "password": "userB123", "user_id": 2, "label": "userB"}
+  ],
+  "idors": [
+    {
+      "id": "JS-IDOR-001",
+      "type": "numeric_id_in_path",
+      "endpoint": "/rest/basket/{id}",
+      "method": "GET",
+      "description": "Basket access via numeric ID in path",
+      "vulnerable_param": "id",
+      "param_location": "path",
+      "evidence_field": "data.Products",
+      "difficulty": "easy"
+    },
+    {
+      "id": "JS-IDOR-002",
+      "type": "numeric_id_in_path",
+      "endpoint": "/rest/user/authentication-details",
+      "method": "GET",
+      "description": "User authentication details exposed",
+      "vulnerable_param": "id",
+      "param_location": "path",
+      "evidence_field": "data",
+      "difficulty": "medium"
+    }
+  ]
+}

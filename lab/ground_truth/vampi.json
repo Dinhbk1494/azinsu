@@ -1,0 +1,32 @@
+{
+  "target": "vampi",
+  "base_url": "http://localhost:5000",
+  "users": [
+    {"email": "name1@site1.com", "password": "pass1", "label": "userA"},
+    {"email": "name2@site1.com", "password": "pass2", "label": "userB"}
+  ],
+  "idors": [
+    {
+      "id": "VAMPI-IDOR-001",
+      "type": "numeric_id_in_path",
+      "endpoint": "/users/{user_id}",
+      "method": "GET",
+      "description": "User data IDOR via user ID",
+      "vulnerable_param": "user_id",
+      "param_location": "path",
+      "evidence_field": "username",
+      "difficulty": "easy"
+    },
+    {
+      "id": "VAMPI-IDOR-002",
+      "type": "numeric_id_in_path",
+      "endpoint": "/books/{book_id}",
+      "method": "GET",
+      "description": "Book details IDOR",
+      "vulnerable_param": "book_id",
+      "param_location": "path",
+      "evidence_field": "secret",
+      "difficulty": "easy"
+    }
+  ]
+}
